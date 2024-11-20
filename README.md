@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # boilerplate
 boilerplate for using aiteung package. Please init your apps, and replace package import with the name iteung/... in the main.go, controller.go dan url.go
 
@@ -203,3 +204,6 @@ var user1 = whatsauth.LoginInfo{
 }
 
 ```
+=======
+# locationgis
+>>>>>>> c654d8a2289b637213762c551306578e5a8856b5
