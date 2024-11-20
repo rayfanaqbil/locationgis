@@ -3,14 +3,14 @@ package main
 import (
 	"log"
 
-	"iteung/config"
+	"github.com/rayfanaqbil/locationgis/config"
 
 	"github.com/aiteung/musik"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 
 
-	"iteung/url"
-
+	"github.com/rayfanaqbil/locationgis/url"
+	_ "github.com/rayfanaqbil/locationgis/docs"
 	"github.com/gofiber/fiber/v2"
 )
 

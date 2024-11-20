@@ -1,0 +1,83 @@
+definitions:
+  models.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  models.Geometry:
+    properties:
+      coordinates:
+        items:
+          items:
+            type: number
+          type: array
+        type: array
+      type:
+        type: string
+    type: object
+  models.NotFoundResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  models.Properties:
+    properties:
+      highway:
+        type: string
+      name:
+        type: string
+      osmID:
+        type: integer
+    type: object
+  models.Road:
+    properties:
+      geometry:
+        $ref: '#/definitions/models.Geometry'
+      id:
+        type: string
+      properties:
+        $ref: '#/definitions/models.Properties'
+      type:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /findnearestroad:
+    get:
+      consumes:
+      - application/json
+      description: Given latitude and longitude, find the nearest road within a 5km
+        radius
+      parameters:
+      - description: Latitude
+        in: query
+        name: latitude
+        required: true
+        type: number
+      - description: Longitude
+        in: query
+        name: longitude
+        required: true
+        type: number
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Found the nearest road
+          schema:
+            $ref: '#/definitions/models.Road'
+        "400":
+          description: Invalid input format
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: No nearby road found
+          schema:
+            $ref: '#/definitions/models.NotFoundResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Find the nearest road
+swagger: "2.0"
